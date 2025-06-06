@@ -5,20 +5,500 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Uplevel Restoration</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+    <style>
+      :root {
+        --color-primary: #0f3f8f;
+        --color-dark: #2b2b2b;
+        --color-white: #ffffff;
+        --color-light-gray: #808080;
+        --spacing: 1rem;
+        --radius: 1rem;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", "Arial", sans-serif;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-dark) 100%
+        );
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Get in Touch Section Styles */
+      .get-in-touch {
+        max-width: 800px;
+        margin: 0 auto;
+        /* padding: 60px 20px; */
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        color: var(--color-white);
+        margin-bottom: 15px;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .contact-form {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius);
+        padding: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .contact-form::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.05),
+          transparent
+        );
+        transition: left 0.6s;
+      }
+
+      .contact-form:hover::before {
+        left: 100%;
+      }
+
+      .contact-form:hover {
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+        position: relative;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .form-label {
+        display: block;
+        color: var(--color-white);
+        font-weight: 500;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+      }
+
+      .form-input,
+      .form-textarea,
+      .form-select {
+        width: 100%;
+        padding: 15px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: calc(var(--radius) * 0.5);
+        color: var(--color-white);
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+      }
+
+      .form-input::placeholder,
+      .form-textarea::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .form-input:focus,
+      .form-textarea:focus,
+      .form-select:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .form-select {
+        cursor: pointer;
+      }
+
+      .form-select option {
+        background: var(--color-dark);
+        color: var(--color-white);
+      }
+
+      .submit-btn {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.1)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: var(--color-white);
+        padding: 15px 40px;
+        border-radius: calc(var(--radius) * 0.5);
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .submit-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .submit-btn:hover::before {
+        left: 100%;
+      }
+
+      .submit-btn:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.2)
+        );
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .submit-btn:active {
+        transform: translateY(-1px);
+      }
+
+      /* Contact Info */
+      .contact-info {
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .contact-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .contact-info-item {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(5px);
+        border-radius: calc(var(--radius) * 0.5);
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .contact-info-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-3px);
+      }
+
+      .contact-info-icon {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .contact-info-text {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.95rem;
+      }
+
+      .contact-info-label {
+        color: var(--color-white);
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      /* Success Message */
+      .success-message {
+        background: rgba(76, 175, 80, 0.2);
+        border: 1px solid rgba(76, 175, 80, 0.4);
+        color: var(--color-white);
+        padding: 15px;
+        border-radius: calc(var(--radius) * 0.5);
+        margin-bottom: 20px;
+        display: none;
+        backdrop-filter: blur(10px);
+      }
+
+      .success-message.show {
+        display: block;
+        animation: slideInUp 0.5s ease;
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .contact-form {
+          padding: 30px 20px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .contact-info-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Animation for form appearing */
+      .contact-form {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s ease forwards;
+        animation-delay: 0.2s;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="header"></div>
 
-    <!-- Main content goes here -->
     <main>
-      <section class="page-container">
-        <div class="page-content">
-          <h1>Contact</h1>
+      <section class="get-in-touch">
+        <div class="section-header">
+          <h2 class="section-title">Get in Touch</h2>
+          <p class="section-subtitle">
+            Ready to start your project? Contact us today for a free
+            consultation and personalized quote
+          </p>
         </div>
+
+        <div class="contact-form">
+          <div class="success-message" id="successMessage">
+            ✅ Thank you for your message! We'll get back to you within 24
+            hours.
+          </div>
+
+          <form
+            id="contactForm"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            data-netlify-recaptcha="true"
+          >
+            <!-- Hidden field for bot protection -->
+            <div style="display: none">
+              <label
+                >Don't fill this out if you're human: <input name="bot-field"
+              /></label>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName" class="form-label">First Name</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  class="form-input"
+                  placeholder="Your first name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  class="form-input"
+                  placeholder="Your last name"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="your.email@example.com"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-input"
+                  placeholder="(123) 456-7890"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service" class="form-label">Service Needed</label>
+              <select id="service" name="service" class="form-select" required>
+                <option value="">Select a service</option>
+                <option value="drywall">Drywall</option>
+                <option value="tile">Tile</option>
+                <option value="flooring">Flooring</option>
+                <option value="ceiling">Ceiling</option>
+                <option value="painting">Painting</option>
+                <option value="windows-doors">
+                  Windows and Door Replacement
+                </option>
+                <option value="basement">Basement Development</option>
+                <option value="multiple">Multiple Services</option>
+                <option value="consultation">Free Consultation</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Project Details</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-textarea"
+                placeholder="Tell us about your project, timeline, and any specific requirements..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+
+        <!-- <div class="contact-info">
+          <div class="contact-info-grid">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📞</div>
+              <div class="contact-info-label">Call Us</div>
+              <div class="contact-info-text">(555) 123-4567</div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">✉️</div>
+              <div class="contact-info-label">Email Us</div>
+              <div class="contact-info-text">info@yourcompany.com</div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">🕒</div>
+              <div class="contact-info-label">Business Hours</div>
+              <div class="contact-info-text">
+                Mon-Fri: 8AM-6PM<br />Sat: 9AM-4PM
+              </div>
+            </div>
+          </div>
+        </div> -->
       </section>
     </main>
     <div id="footer"></div>
+    <script>
+      // Form submission handler for Netlify Forms
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          // Let Netlify handle the form submission naturally
+          // Remove e.preventDefault() to allow normal form submission to Netlify
+
+          // Show success message immediately (will be replaced by Netlify redirect)
+          const successMessage = document.getElementById("successMessage");
+          successMessage.classList.add("show");
+
+          // Optional: You can still log the data for debugging
+          const formData = new FormData(this);
+          const data = {};
+          for (let [key, value] of formData.entries()) {
+            data[key] = value;
+          }
+          console.log("Form data being submitted to Netlify:", data);
+        });
+
+      // Phone number formatting
+      document.getElementById("phone").addEventListener("input", function (e) {
+        let value = e.target.value.replace(/\D/g, "");
+        if (value.length >= 6) {
+          value = value.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+        } else if (value.length >= 3) {
+          value = value.replace(/(\d{3})(\d{0,3})/, "($1) $2");
+        }
+        e.target.value = value;
+      });
+    </script>
     <script src="/assets/js/layout.js"></script>
     <script src="/assets/js/scripts.js"></script>
   </body>
