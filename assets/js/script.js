@@ -28,6 +28,36 @@ const observer = new IntersectionObserver(function (entries) {
 }, observerOptions);
 
 // Observe elements for animation
-document.querySelectorAll(".hero-content, .hero-image").forEach((el) => {
-  observer.observe(el);
+document
+  .querySelectorAll(".hero-content, .hero-image, .feature-card")
+  .forEach((el) => {
+    observer.observe(el);
+  });
+
+// Observe feature cards for animation
+// document.querySelectorAll(".feature-card").forEach((card) => {
+//   observer.observe(card);
+// });
+
+// Додаткові ефекти при кліку
+document.querySelectorAll(".feature-card").forEach((card) => {
+  card.addEventListener("click", function () {
+    this.style.transform = "translateY(-10px) scale(1.05)";
+    setTimeout(() => {
+      this.style.transform = "";
+    }, 200);
+  });
+});
+
+// Паралакс ефект при скролі
+window.addEventListener("scroll", () => {
+  const scrolled = window.pageYOffset;
+  const parallax = document.querySelector(".why-choose-us");
+  const speed = scrolled * 5;
+  parallax.style.transform = `translateY(${speed}px)`;
+});
+
+const valueCards = document.querySelectorAll(".about-value-card");
+valueCards.forEach((card, index) => {
+  card.style.transitionDelay = `${index * 0.1}s`;
 });
