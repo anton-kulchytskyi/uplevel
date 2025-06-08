@@ -43,7 +43,7 @@
       .get-in-touch {
         max-width: 800px;
         margin: 0 auto;
-        /* padding: 60px 20px; */
+        padding: 60px 20px;
       }
 
       .section-header {
@@ -52,7 +52,7 @@
       }
 
       .section-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: var(--color-white);
         margin-bottom: 15px;
         font-weight: 700;
@@ -76,6 +76,10 @@
         position: relative;
         overflow: hidden;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s ease forwards;
+        animation-delay: 0.2s;
       }
 
       .contact-form::before {
@@ -108,12 +112,6 @@
         position: relative;
       }
 
-      .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-
       .form-label {
         display: block;
         color: var(--color-white);
@@ -123,8 +121,7 @@
       }
 
       .form-input,
-      .form-textarea,
-      .form-select {
+      .form-textarea {
         width: 100%;
         padding: 15px 20px;
         background: rgba(255, 255, 255, 0.1);
@@ -143,8 +140,7 @@
       }
 
       .form-input:focus,
-      .form-textarea:focus,
-      .form-select:focus {
+      .form-textarea:focus {
         outline: none;
         border-color: rgba(255, 255, 255, 0.6);
         background: rgba(255, 255, 255, 0.15);
@@ -155,15 +151,6 @@
       .form-textarea {
         min-height: 120px;
         resize: vertical;
-      }
-
-      .form-select {
-        cursor: pointer;
-      }
-
-      .form-select option {
-        background: var(--color-dark);
-        color: var(--color-white);
       }
 
       .submit-btn {
@@ -220,109 +207,160 @@
         transform: translateY(-1px);
       }
 
-      /* Contact Info */
-      .contact-info {
-        margin-top: 40px;
-        text-align: center;
-      }
-
-      .contact-info-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin-top: 30px;
-      }
-
-      .contact-info-item {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(5px);
-        border-radius: calc(var(--radius) * 0.5);
-        padding: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+      /* Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
         transition: all 0.3s ease;
       }
 
-      .contact-info-item:hover {
+      .modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal {
         background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-3px);
+        backdrop-filter: blur(20px);
+        border-radius: var(--radius);
+        padding: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        transform: scale(0.8) translateY(30px);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
       }
 
-      .contact-info-icon {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
+      .modal-overlay.show .modal {
+        transform: scale(1) translateY(0);
       }
 
-      .contact-info-text {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 0.95rem;
+      .modal::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.05),
+          transparent
+        );
+        transition: left 0.6s;
       }
 
-      .contact-info-label {
-        color: var(--color-white);
-        font-weight: 600;
-        margin-bottom: 5px;
+      .modal:hover::before {
+        left: 100%;
       }
 
-      /* Success Message */
-      .success-message {
-        background: rgba(76, 175, 80, 0.2);
-        border: 1px solid rgba(76, 175, 80, 0.4);
-        color: var(--color-white);
-        padding: 15px;
-        border-radius: calc(var(--radius) * 0.5);
+      .modal-icon {
+        font-size: 4rem;
+        color: #4caf50;
         margin-bottom: 20px;
-        display: none;
+        animation: bounceIn 0.6s ease;
+      }
+
+      .modal-title {
+        color: var(--color-white);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .modal-message {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+
+      .modal-close-btn {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.1)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: var(--color-white);
+        padding: 12px 30px;
+        border-radius: calc(var(--radius) * 0.5);
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
         backdrop-filter: blur(10px);
       }
 
-      .success-message.show {
-        display: block;
-        animation: slideInUp 0.5s ease;
-      }
-
-      @keyframes slideInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .section-title {
-          font-size: 2rem;
-        }
-
-        .contact-form {
-          padding: 30px 20px;
-        }
-
-        .form-row {
-          grid-template-columns: 1fr;
-          gap: 0;
-        }
-
-        .contact-info-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* Animation for form appearing */
-      .contact-form {
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeInUp 0.8s ease forwards;
-        animation-delay: 0.2s;
+      .modal-close-btn:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.2)
+        );
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       }
 
       @keyframes fadeInUp {
         to {
           opacity: 1;
           transform: translateY(0);
+        }
+      }
+
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0.3);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        70% {
+          transform: scale(0.9);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .contact-form {
+          padding: 30px 20px;
+        }
+
+        .modal {
+          padding: 30px 20px;
+        }
+
+        .modal-icon {
+          font-size: 3rem;
+        }
+
+        .modal-title {
+          font-size: 1.3rem;
         }
       }
     </style>
@@ -341,11 +379,6 @@
         </div>
 
         <div class="contact-form">
-          <div class="success-message" id="successMessage">
-            ✅ Thank you for your message! We'll get back to you within 24
-            hours.
-          </div>
-
           <form
             id="contactForm"
             name="contact"
@@ -353,91 +386,43 @@
             data-netlify-recaptcha="true"
             netlify
           >
-            <!-- Hidden field for bot protection -->
             <input type="hidden" name="form-name" value="contact" />
-            <!-- <div style="display: none">
-              <label
-                >Don't fill this out if you're human: <input name="bot-field"
-              /></label>
-            </div> -->
-            <div class="form-row">
-              <div class="form-group">
-                <label for="firstName" class="form-label">First Name</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  class="form-input"
-                  placeholder="Your first name"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="email" class="form-label">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="form-input"
-                  placeholder="your.email@example.com"
-                  required
-                />
-              </div>
-              <!-- <div class="form-group">
-                <label for="lastName" class="form-label">Last Name</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  class="form-input"
-                  placeholder="Your last name"
-                  required
-                />
-              </div> -->
+
+            <div class="form-group">
+              <label for="firstName" class="form-label">Full Name</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                class="form-input"
+                placeholder="Enter your full name"
+                required
+              />
             </div>
 
-            <!-- <div class="form-row">
-              <div class="form-group">
-                <label for="email" class="form-label">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="form-input"
-                  placeholder="your.email@example.com"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="phone" class="form-label">Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  class="form-input"
-                  placeholder="(123) 456-7890"
-                  required
-                />
-              </div>
-            </div> -->
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                placeholder="your.email@example.com"
+                required
+              />
+            </div>
 
-            <!-- <div class="form-group">
-              <label for="service" class="form-label">Service Needed</label>
-              <select id="service" name="service" class="form-select" required>
-                <option value="">Select a service</option>
-                <option value="drywall">Drywall</option>
-                <option value="tile">Tile</option>
-                <option value="flooring">Flooring</option>
-                <option value="ceiling">Ceiling</option>
-                <option value="painting">Painting</option>
-                <option value="windows-doors">
-                  Windows and Door Replacement
-                </option>
-                <option value="basement">Basement Development</option>
-                <option value="multiple">Multiple Services</option>
-                <option value="consultation">Free Consultation</option>
-              </select>
-            </div> -->
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="form-input"
+                placeholder="(123) 456-7890"
+                required
+              />
+            </div>
 
             <div class="form-group">
               <label for="message" class="form-label">Project Details</label>
@@ -455,32 +440,48 @@
             <button type="submit" class="submit-btn">Send Message</button>
           </form>
         </div>
-
-        <!-- <div class="contact-info">
-          <div class="contact-info-grid">
-            <div class="contact-info-item">
-              <div class="contact-info-icon">📞</div>
-              <div class="contact-info-label">Call Us</div>
-              <div class="contact-info-text">(555) 123-4567</div>
-            </div>
-            <div class="contact-info-item">
-              <div class="contact-info-icon">✉️</div>
-              <div class="contact-info-label">Email Us</div>
-              <div class="contact-info-text">info@yourcompany.com</div>
-            </div>
-            <div class="contact-info-item">
-              <div class="contact-info-icon">🕒</div>
-              <div class="contact-info-label">Business Hours</div>
-              <div class="contact-info-text">
-                Mon-Fri: 8AM-6PM<br />Sat: 9AM-4PM
-              </div>
-            </div>
-          </div>
-        </div> -->
       </section>
     </main>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+      <div class="modal">
+        <div class="modal-icon">✅</div>
+        <h3 class="modal-title">Thank You!</h3>
+        <p class="modal-message">
+          Your message has been sent successfully. We'll get back to you within
+          24 hours.
+        </p>
+        <button class="modal-close-btn" id="closeModal">Close</button>
+      </div>
+    </div>
+
     <div id="footer"></div>
+
     <script>
+      // Phone number formatting function
+      function formatPhoneNumber(phoneNumber) {
+        const cleaned = phoneNumber.replace(/\D/g, "");
+
+        if (cleaned.length <= 3) {
+          return cleaned;
+        } else if (cleaned.length <= 6) {
+          return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3)}`;
+        } else {
+          return `(${cleaned.slice(0, 3)}) ${cleaned.slice(
+            3,
+            6
+          )}-${cleaned.slice(6, 10)}`;
+        }
+      }
+
+      // Apply phone formatting on input
+      document.getElementById("phone").addEventListener("input", function (e) {
+        const formatted = formatPhoneNumber(e.target.value);
+        e.target.value = formatted;
+      });
+
+      // Form submission handler
       const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -492,45 +493,51 @@
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: new URLSearchParams(formData).toString(),
         })
-          .then(() => alert("Thank you for your submission"))
-          .catch((error) => alert(error));
+          .then(() => {
+            // Show success modal
+            document.getElementById("successModal").classList.add("show");
+          })
+          .catch((error) => {
+            alert("Something went wrong. Please try again.");
+            console.error("Error:", error);
+          });
       };
 
+      // Close modal and clear form
+      function closeModal() {
+        document.getElementById("successModal").classList.remove("show");
+        // Clear form after modal closes
+        setTimeout(() => {
+          document.getElementById("contactForm").reset();
+        }, 300);
+      }
+
+      // Event listeners
       document.querySelector("form").addEventListener("submit", handleSubmit);
-    </script>
-    <!-- <script>
-      // Form submission handler for Netlify Forms
       document
-        .getElementById("contactForm")
-        .addEventListener("submit", function (e) {
-          // Let Netlify handle the form submission naturally
-          // Remove e.preventDefault() to allow normal form submission to Netlify
+        .getElementById("closeModal")
+        .addEventListener("click", closeModal);
 
-          // Show success message immediately (will be replaced by Netlify redirect)
-          const successMessage = document.getElementById("successMessage");
-          successMessage.classList.add("show");
-
-          // Optional: You can still log the data for debugging
-          const formData = new FormData(this);
-          const data = {};
-          for (let [key, value] of formData.entries()) {
-            data[key] = value;
+      // Close modal on overlay click
+      document
+        .getElementById("successModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeModal();
           }
-          console.log("Form data being submitted to Netlify:", data);
         });
 
-      // Phone number formatting
-      document.getElementById("phone").addEventListener("input", function (e) {
-        let value = e.target.value.replace(/\D/g, "");
-        if (value.length >= 6) {
-          value = value.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-        } else if (value.length >= 3) {
-          value = value.replace(/(\d{3})(\d{0,3})/, "($1) $2");
+      // Close modal on Escape key
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "Escape" &&
+          document.getElementById("successModal").classList.contains("show")
+        ) {
+          closeModal();
         }
-        e.target.value = value;
       });
-    </script> -->
+    </script>
+
     <script src="/assets/js/layout.js"></script>
-    <!-- <script src="/assets/js/scripts.js"></script> -->
   </body>
 </html>
