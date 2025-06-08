@@ -1695,25 +1695,49 @@ main {
   background-repeat: no-repeat;
   width: 64px;
   height: 64px;
+  background-color: #ffffff;
 }
-.icon-drywall {
+/* .icon-drywall {
   background-image: url("../icons/drywall.svg");
+} */
+.icon-drywall {
+  background-image: url("../images/drywall.jpg");
 }
-.icon-tile {
+/* .icon-tile {
   background-image: url("../icons/tile.svg");
+} */
+/* .icon-tile {
+  background-image: url("../images/tile.jpg");
+} */
+.icon-tile {
+  /* background-image: url("../icons/tile-new.svg"); */
+  background-image: url("../images/tile.jpg");
 }
 .icon-flooring {
-  background-image: url("../icons/flooring.svg");
+  /* background-image: url("../icons/flooring.svg"); */
+  background-image: url("../images/flooring.jpg");
 }
-.icon-ceiling {
+/* .icon-ceiling {
   background-image: url("../icons/ceiling.svg");
+} */
+/* .icon-ceiling {
+  background-image: url("../icons/ceiling-new.svg");
+} */
+.icon-ceiling {
+  background-image: url("../images/ceiling.jpg");
 }
 .icon-painting {
-  background-image: url("../icons/painting.svg");
+  /* background-image: url("../icons/painting.svg"); */
+  background-image: url("../images/painting.jpg");
 }
-.icon-windows-doors {
+/* .icon-windows-doors {
   background-image: url("../icons/windows-doors.svg");
+} */
+.icon-windows-doors {
+  /* background-image: url("../icons/windows-doors-new.svg"); */
+  background-image: url("../images/windows-doors.jpg");
 }
 .icon-basement {
-  background-image: url("../icons/basement.svg");
+  /* background-image: url("../icons/basement.svg"); */
+  background-image: url("../images/basement.jpg");
 }
