@@ -1018,9 +1018,9 @@ main {
   left: 100%;
 }
 
-.logo:hover {
+/* .logo:hover {
   transform: scale(1.05) translateY(-2px);
-}
+} */
 
 .logo img {
   height: 80px;
@@ -1447,7 +1447,7 @@ main {
   }
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .mobile-menu {
     display: none;
   }
@@ -1455,7 +1455,7 @@ main {
   .mobile-menu-overlay {
     display: none;
   }
-}
+} */
 
 /* Loading animations */
 .nav-menu li {
@@ -1583,6 +1583,9 @@ main {
   color: var(--color-white);
   margin-bottom: 20px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
 }
 
 .service-description {
@@ -1685,4 +1688,32 @@ main {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.service-icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 64px;
+}
+.icon-drywall {
+  background-image: url("../icons/drywall.svg");
+}
+.icon-tile {
+  background-image: url("../icons/tile.svg");
+}
+.icon-flooring {
+  background-image: url("../icons/flooring.svg");
+}
+.icon-ceiling {
+  background-image: url("../icons/ceiling.svg");
+}
+.icon-painting {
+  background-image: url("../icons/painting.svg");
+}
+.icon-windows-doors {
+  background-image: url("../icons/windows-doors.svg");
+}
+.icon-basement {
+  background-image: url("../icons/basement.svg");
 }

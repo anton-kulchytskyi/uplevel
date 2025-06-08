@@ -1,0 +1,136 @@
+<svg
+  class="icon"
+  viewBox="0 0 100 100"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id="drywall-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color: #ffffff; stop-opacity: 1" />
+      <stop offset="100%" style="stop-color: #cccccc; stop-opacity: 1" />
+    </linearGradient>
+    <linearGradient id="screw-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color: #c0c0c0; stop-opacity: 1" />
+      <stop offset="100%" style="stop-color: #808080; stop-opacity: 1" />
+    </linearGradient>
+  </defs>
+  <!-- Main drywall panel -->
+  <rect
+    x="15"
+    y="25"
+    width="70"
+    height="50"
+    rx="3"
+    fill="url(#drywall-grad)"
+    stroke="
+#ffffff"
+    stroke-width="2"
+  />
+  <!-- Drywall seams -->
+  <line
+    x1="50"
+    y1="25"
+    x2="50"
+    y2="75"
+    stroke="
+#0f3f8f"
+    stroke-width="1.5"
+    opacity="0.6"
+  />
+  <line
+    x1="15"
+    y1="50"
+    x2="85"
+    y2="50"
+    stroke="
+#0f3f8f"
+    stroke-width="1.5"
+    opacity="0.6"
+  />
+  <!-- Drywall screws -->
+  <circle cx="30" cy="35" r="1.5" fill="url(#screw-grad)" />
+  <circle cx="70" cy="35" r="1.5" fill="url(#screw-grad)" />
+  <circle cx="30" cy="65" r="1.5" fill="url(#screw-grad)" />
+  <circle cx="70" cy="65" r="1.5" fill="url(#screw-grad)" />
+  <circle cx="50" cy="40" r="1.5" fill="url(#screw-grad)" />
+  <circle cx="50" cy="60" r="1.5" fill="url(#screw-grad)" />
+  <!-- Screw heads detail -->
+  <path
+    d="M29 35 L31 35 M30 34 L30 36"
+    stroke="
+#0f3f8f"
+    stroke-width="0.5"
+    opacity="0.8"
+  />
+  <path
+    d="M69 35 L71 35 M70 34 L70 36"
+    stroke="
+#0f3f8f"
+    stroke-width="0.5"
+    opacity="0.8"
+  />
+  <path
+    d="M29 65 L31 65 M30 64 L30 66"
+    stroke="
+#0f3f8f"
+    stroke-width="0.5"
+    opacity="0.8"
+  />
+  <path
+    d="M69 65 L71 65 M70 64 L70 66"
+    stroke="
+#0f3f8f"
+    stroke-width="0.5"
+    opacity="0.8"
+  />
+  <!-- Drywall knife/tool -->
+  <rect
+    x="75"
+    y="15"
+    width="3"
+    height="25"
+    rx="1"
+    fill="url(#screw-grad)"
+    stroke="
+#0f3f8f"
+    stroke-width="0.5"
+  />
+  <rect
+    x="73"
+    y="40"
+    width="7"
+    height="8"
+    rx="1"
+    fill="
+#8B4513"
+    stroke="
+#0f3f8f"
+    stroke-width="0.5"
+  />
+  <path
+    d="M76.5 48 L76.5 55"
+    stroke="
+#0f3f8f"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+  <!-- Mud/compound -->
+  <ellipse
+    cx="25"
+    cy="80"
+    rx="8"
+    ry="3"
+    fill="rgba(255,255,255,0.8)"
+    stroke="
+#0f3f8f"
+    stroke-width="1"
+    opacity="0.7"
+  />
+  <path
+    d="M20 80 Q25 78 30 80"
+    stroke="
+#0f3f8f"
+    stroke-width="1"
+    opacity="0.5"
+  />
+</svg>
