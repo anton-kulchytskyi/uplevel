@@ -149,13 +149,14 @@ uplevel-restoration-website/
 
 1. Зайдіть на сайт Netlify: https://www.netlify.com/
 2. Увійдіть в свій акаунт
-3. Знайдіть ваш сайт в списку
+3. Знайдіть ваш сайт в списку та виберіть в боковому меню `Deploys`
 4. Перетягніть всю папку з файлами в область "Drag and drop"
 5. Зачекайте завершення завантаження
 6. Скопіюйте посилання на новий сайт
 7. Замініть старий сайт новим в [файлі](assets/js/layout.js)
 8. Так само замініть назву після прив'язки свого домену
 
+![Deploys](assets/images/readme/deploy-netlify.png)
 ![Home URL](assets/images/readme/home-url.png)
 
 ## ⚠️ Важливі поради
