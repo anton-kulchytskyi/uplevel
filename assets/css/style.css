@@ -40,10 +40,10 @@ body {
 }
 
 /* Header Styles */
-.header {
+/* .header {
   z-index: 1000;
   min-height: 120px;
-  /* Світло-сірий фон з легким відтінком синього */
+
   background: linear-gradient(135deg, #f8f9fb 0%, #e8f0ff 100%);
   border-bottom: 1px solid rgba(15, 63, 143, 0.1);
   box-shadow: 0 2px 20px rgba(15, 63, 143, 0.08);
@@ -51,14 +51,14 @@ body {
 
 .header.scrolled {
   box-shadow: 0 4px 30px rgba(15, 63, 143, 0.15);
-  /* Трохи темніший при скролі */
+
   background: linear-gradient(135deg, #f4f6f8 0%, #e0ecff 100%);
-}
-/* .header {
+} */
+.header {
   z-index: 1000;
   min-height: 120px;
 
-  background-color: var(--color-white);
+  background-color: var(--color-white) !important;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
@@ -66,8 +66,8 @@ body {
 
 .header.scrolled {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-  background-color: rgba(255, 255, 255, 0.95);
-} */
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
 
 /* .header {
   z-index: 1000;
@@ -906,213 +906,5 @@ main {
   .social-icon-container {
     width: 45px;
     height: 45px;
-  }
-}
-
-/* Замінити існуючі стилі .header на ці: */
-
-.header {
-  z-index: 1000;
-  min-height: 120px;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-dark) 100%
-  );
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.header.scrolled {
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(
-    135deg,
-    rgba(15, 63, 143, 0.95) 0%,
-    rgba(43, 43, 43, 0.95) 100%
-  );
-}
-
-/* Декоративні елементи фону */
-.header::before,
-.header::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 0%,
-    transparent 70%
-  );
-  animation: pulse 4s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.header::before {
-  width: 150px;
-  height: 150px;
-  top: -75px;
-  right: 10%;
-  animation-delay: 0s;
-}
-
-.header::after {
-  width: 200px;
-  height: 200px;
-  bottom: -100px;
-  left: 15%;
-  animation-delay: 2s;
-}
-
-/* Додатковий декоративний елемент */
-.header-container::before {
-  content: "";
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  top: 50%;
-  right: 25%;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.05) 0%,
-    transparent 70%
-  );
-  animation: float 6s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Виділення логотипу */
-.logo {
-  position: relative;
-  z-index: 10;
-  padding: 10px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.logo:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-  background: rgba(255, 255, 255, 1);
-}
-
-.logo::before {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(15, 63, 143, 0.1),
-    transparent
-  );
-}
-
-.logo img {
-  height: 80px;
-  width: auto;
-  max-width: 200px;
-  object-fit: contain;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-/* Стилі навігації - білий текст */
-.nav-menu a {
-  color: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 0.75rem 0;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  display: block;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.nav-menu a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -10px;
-  right: -10px;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.3s ease;
-}
-
-.nav-menu a:hover::before {
-  transform: scaleY(1);
-}
-
-.nav-menu a:hover {
-  color: #ffffff;
-  transform: translateY(-2px);
-  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
-}
-
-.nav-menu a::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.7));
-  border-radius: 2px;
-  transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.nav-menu a:hover::after {
-  width: 100%;
-}
-
-/* Мобільна кнопка меню - світла */
-.mobile-menu-toggle {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-}
-
-.mobile-menu-toggle:hover {
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-}
-
-.mobile-menu-toggle span {
-  background-color: #ffffff;
-}
-
-/* Анімації */
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.6;
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(-50%) translateX(0);
-  }
-  33% {
-    transform: translateY(-60%) translateX(10px);
-  }
-  66% {
-    transform: translateY(-40%) translateX(-5px);
   }
 }
