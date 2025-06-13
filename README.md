@@ -58,7 +58,8 @@ uplevel-restoration-website/
 │   │   ├── layout.js      # Завантаження header/footer
 │   │   └── scripts.js     # Основна логіка сайту
 │   └── images/            # Всі зображення
-│       ├── logo.jpg       # Логотип компанії
+│       ├── logo.png       # Логотип компанії
+│       ├── favicon.svg    # Favicon для браузера
 │       ├── home/          # Зображення для головної сторінки
 │       ├── readme/        # Зображення для цієї інструкції
 │       ├── about/         # Зображення для сторінки "Про нас"
@@ -106,10 +107,25 @@ uplevel-restoration-website/
 
 ### Як замінити зображення:
 
+#### Рекомендований формат зображень
+
+**Використовуйте формат WebP** для кращої продуктивності сайту:
+
+- WebP забезпечує кращу якість при меншому розмірі файлу
+- Швидше завантаження сторінок
+- Краща SEO оптимізація
+
+**Де конвертувати зображення в WebP:**
+
+- [Convertio](https://convertio.co/jpg-webp/) - онлайн конвертер
+- [CloudConvert](https://cloudconvert.com/jpg-to-webp) - підтримує багато форматів
+- [Squoosh](https://squoosh.app) - інструмент від Google
+- [TinyPNG](https://tinypng.com) - також підтримує WebP конвертацію
+
 #### Спосіб 1: Заміна через HTML файл
 
 1. Скопіюйте нове зображення в відповідну папку `assets/images/`
-2. Дайте йому зрозумілу назву (наприклад, `new-service-photo.jpg`)
+2. Дайте йому зрозумілу назву (наприклад, `new-service-photo.webp`)
 3. У HTML файлі знайдіть старе посилання на зображення
 4. Замініть назву файлу на нову
 5. Збережіть та перевірте результат
@@ -119,15 +135,15 @@ uplevel-restoration-website/
 **Для сторінки Services (послуги):**
 
 - Зображення названі відповідно до розділу послуг
-- Наприклад: `assets/images/services/drywall.jpg` відповідає блоку "Drywall" на сторінці services.html
-- **Для заміни:** просто назвіть нове зображення точно так само (`drywall.jpg`) і замініть старий файл
-- Інші приклади назв: `plumbing.jpg`, `electrical.jpg`, `painting.jpg` тощо
+- Наприклад: `assets/images/services/drywall.webp` відповідає блоку "Drywall" на сторінці services.html
+- **Для заміни:** просто назвіть нове зображення точно так само (`drywall.webp`) і замініть старий файл
+- Інші приклади назв: `plumbing.webp`, `electrical.webp`, `painting.webp` тощо
 
 **Для сторінки About (про нас):**
 
 - Зображення йдуть по порядку відображення на сторінці
-- Назви: `assets/images/about/about-1.jpg`, `assets/images/about/about-2.jpg`, `assets/images/about/about-3.jpg` тощо
-- **Для заміни:** назвіть нове зображення з відповідним номером (`about-1.jpg`, `about-2.jpg`) і замініть потрібний файл
+- Назви: `assets/images/about/about-1.webp`, `assets/images/about/about-2.webp`, `assets/images/about/about-3.webp` тощо
+- **Для заміни:** назвіть нове зображення з відповідним номером (`about-1.webp`, `about-2.webp`) і замініть потрібний файл
 
 **Переваги способу 2:**
 
