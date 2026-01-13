@@ -1,0 +1,56 @@
+{
+  "companyName": "Uplevel Restoration",
+  "tagline": "Professional Property Restoration Services in Saskatoon",
+  "contact": {
+    "email": "uplevel@uplevelcorp.ca",
+    "phones": [
+      {
+        "number": "+1-306-850-5955",
+        "display": "+1-306-850-5955",
+        "label": "Emergency Line",
+        "emergency": true
+      },
+      {
+        "number": "+1-306-850-6013",
+        "display": "+1-306-850-6013",
+        "label": "Office"
+      }
+    ],
+    "address": {
+      "street": "",
+      "city": "Saskatoon",
+      "province": "SK",
+      "postalCode": "",
+      "country": "Canada"
+    }
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/uplevel_corp/",
+    "facebook": "https://www.facebook.com/uplevelcorp/",
+    "email": "mailto:uplevel@uplevelcorp.ca"
+  },
+  "emergencyBanner": {
+    "text": "EMERGENCY RESPONSE — 24/7",
+    "cta": "Call Now: 306-850-5955",
+    "phone": "+1-306-850-5955",
+    "visible": true
+  },
+  "certifications": [
+    {
+      "name": "IICRC Certified",
+      "logo": "/assets/images/certifications/iicrc.jpg",
+      "type": "image",
+      "alt": "IICRC Certification"
+    },
+    {
+      "name": "Saskatoon Chamber of Commerce",
+      "type": "widget",
+      "widgetId": "mni-membership-639038444562952735",
+      "script": "https://saskatoonchamber.chambermaster.com/Content/Script/Member.js",
+      "config": {
+        "member": 8663,
+        "styleTemplate": "#@id{text-align:center;position:relative}#@id .mn-widget-member-name{font-weight:700}#@id .mn-widget-member-logo{max-width:100%}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "hero": {
+    "title": "When Disaster Strikes, We're Ready — 24/7",
+    "subtitle": "",
+    "description": "At Uplevel Restoration, we specialize in emergency property restoration following water, fire, smoke, and mold losses. Our trained team responds 24/7 to mitigate damage, protect your property, and guide you through the insurance process. From initial emergency response and contents handling to full reconstruction, we focus on doing the job right — safely, efficiently, and in accordance with industry standards.",
+    "cta": {
+      "text": "Get Free Consultation",
+      "link": "/contact.html"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Uplevel Restoration?",
+    "subtitle": "Trusted Emergency Response • Insurance-Focused • 24/7 Availability",
+    "features": [
+      {
+        "icon": "⚡",
+        "title": "24/7 Emergency Response",
+        "description": "We respond quickly to water, fire, smoke, and mold losses to prevent further damage and stabilize your property as soon as possible."
+      },
+      {
+        "icon": "📋",
+        "title": "Insurance-Focused Process",
+        "description": "We work alongside homeowners and insurance providers, documenting damage properly and helping move the claim forward efficiently and professionally."
+      },
+      {
+        "icon": "✅",
+        "title": "Industry-Standard Mitigation",
+        "description": "Our work follows established industry standards to ensure proper drying, cleaning, and remediation before repairs begin."
+      },
+      {
+        "icon": "🔄",
+        "title": "From Mitigation to Reconstruction",
+        "description": "From emergency response and contents handling to post-loss reconstruction, we manage the entire restoration process to help you return to normal faster."
+      },
+      {
+        "icon": "📦",
+        "title": "Contents Handling & Pack-Outs",
+        "description": "When required, we carefully inventory, pack, store, and return your belongings to protect them during restoration work."
+      },
+      {
+        "icon": "💬",
+        "title": "Clear Communication & Control",
+        "description": "We keep homeowners informed at every stage, explaining what's happening, what comes next, and what to expect throughout the restoration process."
+      }
+    ]
+  }
+}

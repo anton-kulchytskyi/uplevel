@@ -1,0 +1,64 @@
+{
+  "services": [
+    {
+      "id": "emergency-restoration",
+      "title": "Emergency Restoration (24/7)",
+      "slug": "emergency-restoration",
+      "shortDescription": "Round-the-clock emergency response for property disasters. Our certified team provides immediate mitigation services to minimize damage and begin the restoration process.",
+      "icon": "🚨",
+      "featured": true,
+      "keywords": ["emergency response", "24/7 restoration", "property disasters", "immediate mitigation"],
+      "image": "/assets/images/services/emergency-restoration.webp"
+    },
+    {
+      "id": "water-damage",
+      "title": "Water Damage Restoration",
+      "slug": "water-damage-restoration",
+      "shortDescription": "Expert water damage restoration services including extraction, drying, and dehumidification. We handle floods, leaks, and storm damage with advanced equipment and proven techniques.",
+      "icon": "💧",
+      "featured": true,
+      "keywords": ["water damage", "flood restoration", "water extraction", "property damage"],
+      "image": "/assets/images/services/water-damage.webp"
+    },
+    {
+      "id": "fire-smoke-damage",
+      "title": "Fire & Smoke Damage Restoration",
+      "slug": "fire-smoke-damage-restoration",
+      "shortDescription": "Complete fire and smoke damage restoration from assessment to reconstruction. Our specialists handle soot removal, odor elimination, and structural repairs after fire disasters.",
+      "icon": "🔥",
+      "featured": true,
+      "keywords": ["fire damage", "smoke restoration", "disaster recovery", "fire mitigation"],
+      "image": "/assets/images/services/fire-smoke.webp"
+    },
+    {
+      "id": "mold-remediation",
+      "title": "Mold Remediation",
+      "slug": "mold-remediation",
+      "shortDescription": "Professional mold inspection, containment, and removal services. We identify moisture sources, eliminate mold growth, and prevent future contamination to protect your property.",
+      "icon": "🦠",
+      "featured": false,
+      "keywords": ["mold remediation", "mold removal", "property restoration", "emergency response"],
+      "image": "/assets/images/services/mold-remediation.webp"
+    },
+    {
+      "id": "contents-packout",
+      "title": "Contents & Pack-Out Services",
+      "slug": "contents-pack-out-services",
+      "shortDescription": "Secure inventory, pack-out, cleaning, and storage of your belongings during restoration. We handle contents with care, providing detailed documentation and safe storage solutions.",
+      "icon": "📦",
+      "featured": false,
+      "keywords": ["pack-out services", "contents restoration", "property damage", "disaster recovery"],
+      "image": "/assets/images/services/packout.webp"
+    },
+    {
+      "id": "reconstruction",
+      "title": "Reconstruction After Loss",
+      "slug": "reconstruction-after-loss",
+      "shortDescription": "Full-service reconstruction and rebuilding after property disasters. From structural repairs to final finishes, we restore your property to pre-loss condition or better.",
+      "icon": "🏗️",
+      "featured": false,
+      "keywords": ["reconstruction", "property restoration", "disaster recovery", "fire damage", "water damage"],
+      "image": "/assets/images/services/reconstruction.webp"
+    }
+  ]
+}
