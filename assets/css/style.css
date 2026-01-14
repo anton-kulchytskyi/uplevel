@@ -22,10 +22,7 @@ body {
 }
 
 #header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 1000;
   min-height: 120px;
   opacity: 0;
@@ -103,8 +100,19 @@ body {
 }
 
 /* Emergency Banner */
+#emergency-banner {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
 .emergency-banner {
-  background: linear-gradient(90deg, var(--color-primary), #1557b0);
+  /* background: linear-gradient(90deg, var(--color-primary), #1557b0); */
+  background: linear-gradient(
+    135deg,
+    rgba(43, 43, 43, 0.95) 0%,
+    rgba(15, 63, 143, 0.9) 50%,
+    rgba(43, 43, 43, 0.95) 100%
+  );
   color: white;
   padding: 0.75rem 1rem;
   display: flex;
@@ -112,9 +120,6 @@ body {
   align-items: center;
   gap: 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  position: sticky;
-  top: 120px;
-  /* z-index: 998; */
 }
 
 .emergency-text {
@@ -269,13 +274,17 @@ body {
 }
 
 /* Mobile Menu Toggle Button */
-.mobile-menu-toggle {
+#mobile-menu-toggle {
   display: none;
+}
+
+.mobile-menu-toggle {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background: linear-gradient(
     145deg,
     rgba(15, 63, 143, 0.1),
@@ -284,12 +293,11 @@ body {
   border: 1px solid rgba(15, 63, 143, 0.2);
   border-radius: 10px;
   cursor: pointer;
-  z-index: 1001;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   backdrop-filter: blur(10px);
 }
 
-.mobile-menu-toggle:hover {
+/* .mobile-menu-toggle:hover {
   background: linear-gradient(
     145deg,
     rgba(15, 63, 143, 0.2),
@@ -297,7 +305,7 @@ body {
   );
   transform: scale(1.05);
   box-shadow: 0 5px 15px rgba(15, 63, 143, 0.2);
-}
+} */
 
 .mobile-menu-toggle span {
   display: block;
@@ -346,7 +354,7 @@ body {
   );
   backdrop-filter: blur(20px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 999;
+  z-index: 1001;
   transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   padding: 100px 0 2rem 0;
   overflow-y: auto;
@@ -615,15 +623,12 @@ body {
   }
 
   #header {
+    position: relative;
     min-height: 70px;
   }
 
   .desktop-nav {
     display: none;
-  }
-
-  .mobile-menu-toggle {
-    display: flex;
   }
 
   .header-container {
@@ -660,22 +665,30 @@ body {
     height: 28px;
   }
 
-  .mobile-menu-toggle {
-    margin-left: 0;
-    position: absolute;
+  #mobile-menu-toggle {
+    display: block;
+    position: fixed;
     left: 1rem;
     top: 1.25rem;
-    z-index: 1001;
+    z-index: 1003;
   }
 
-  .mobile-menu-toggle.active {
-    position: fixed;
+  .mobile-menu-toggle {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.8)
+    );
+    border: 1px solid rgba(15, 63, 143, 0.3);
+  }
+
+  /* .mobile-menu-toggle.active {
     background: linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.2),
       rgba(255, 255, 255, 0.1)
     );
-  }
+  } */
 
   .mobile-menu-toggle.active span {
     background-color: rgba(255, 255, 255, 0.9);
@@ -698,7 +711,6 @@ body {
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.6rem 0.5rem;
-    top: 70px;
   }
 
   .emergency-text {
@@ -712,7 +724,7 @@ body {
   }
 
   main {
-    margin-top: 125px;
+    margin-top: 0;
   }
 }
 
@@ -743,10 +755,9 @@ body {
   }
 }
 
-/* Adjustments for main content to account for fixed header + emergency banner */
+/* Adjustments for main content */
 main {
-  margin-top: 170px;
-  /* padding-top: var(--spacing); */
+  margin-top: 0;
   padding: 2rem var(--spacing);
   flex: 1;
 }
