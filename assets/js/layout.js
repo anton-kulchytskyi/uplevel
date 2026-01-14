@@ -17,10 +17,10 @@ function includePart(id, file, callback) {
 
 function initHeader() {
   // Mobile menu toggle
+  const header = document.getElementById("header");
   const mobileMenuToggle = document.getElementById("mobileMenuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
-  const mobileMenuOverlay = document.querySelector(".mobile-menu-overlay");
-  const header = document.getElementById("header");
+  const mobileMenuOverlay = header.querySelector(".mobile-menu-overlay");
 
   // Toggle mobile menu
   mobileMenuToggle.addEventListener("click", function () {
