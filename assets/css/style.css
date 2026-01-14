@@ -22,10 +22,7 @@ body {
 }
 
 #header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 1000;
   min-height: 120px;
   opacity: 0;
@@ -102,9 +99,36 @@ body {
   border-radius: 8px;
 }
 
+/* 24/7 Badge */
+.badge-24-7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--color-primary), #1557b0);
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(15, 63, 143, 0.3);
+  letter-spacing: 0.05em;
+}
+
 /* Emergency Banner */
+#emergency-banner {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
 .emergency-banner {
-  background: linear-gradient(90deg, var(--color-primary), #1557b0);
+  /* background: linear-gradient(90deg, var(--color-primary), #1557b0); */
+  background: linear-gradient(
+    135deg,
+    rgba(43, 43, 43, 0.95) 0%,
+    rgba(15, 63, 143, 0.9) 50%,
+    rgba(43, 43, 43, 0.95) 100%
+  );
   color: white;
   padding: 0.75rem 1rem;
   display: flex;
@@ -112,9 +136,6 @@ body {
   align-items: center;
   gap: 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  position: sticky;
-  top: 120px;
-  /* z-index: 998; */
 }
 
 .emergency-text {
@@ -192,9 +213,9 @@ body {
 }
 
 .logo img {
-  height: 80px;
+  height: 90px;
   width: auto;
-  max-width: 200px;
+  max-width: 220px;
   object-fit: contain;
   border-radius: 6px;
   transition: all 0.3s ease;
@@ -269,13 +290,17 @@ body {
 }
 
 /* Mobile Menu Toggle Button */
-.mobile-menu-toggle {
+#mobile-menu-toggle {
   display: none;
+}
+
+.mobile-menu-toggle {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background: linear-gradient(
     145deg,
     rgba(15, 63, 143, 0.1),
@@ -284,20 +309,20 @@ body {
   border: 1px solid rgba(15, 63, 143, 0.2);
   border-radius: 10px;
   cursor: pointer;
-  z-index: 1001;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   backdrop-filter: blur(10px);
 }
 
-.mobile-menu-toggle:hover {
+/* .mobile-menu-toggle:hover {
   background: linear-gradient(
     145deg,
     rgba(15, 63, 143, 0.2),
     rgba(15, 63, 143, 0.1)
   );
   transform: scale(1.05);
+  
   box-shadow: 0 5px 15px rgba(15, 63, 143, 0.2);
-}
+} */
 
 .mobile-menu-toggle span {
   display: block;
@@ -346,7 +371,7 @@ body {
   );
   backdrop-filter: blur(20px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 999;
+  z-index: 1001;
   transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   padding: 100px 0 2rem 0;
   overflow-y: auto;
@@ -615,15 +640,12 @@ body {
   }
 
   #header {
+    position: relative;
     min-height: 70px;
   }
 
   .desktop-nav {
     display: none;
-  }
-
-  .mobile-menu-toggle {
-    display: flex;
   }
 
   .header-container {
@@ -640,8 +662,8 @@ body {
   }
 
   .logo img {
-    height: 50px;
-    max-width: 140px;
+    height: 60px;
+    max-width: 150px;
   }
 
   .logo-badge-24-7 {
@@ -660,22 +682,36 @@ body {
     height: 28px;
   }
 
-  .mobile-menu-toggle {
-    margin-left: 0;
-    position: absolute;
-    left: 1rem;
-    top: 1.25rem;
-    z-index: 1001;
+  .badge-24-7 {
+    width: 28px;
+    height: 28px;
+    font-size: 0.6rem;
   }
 
-  .mobile-menu-toggle.active {
+  #mobile-menu-toggle {
+    display: block;
     position: fixed;
+    left: 1rem;
+    top: 1.25rem;
+    z-index: 1003;
+  }
+
+  .mobile-menu-toggle {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.8)
+    );
+    border: 1px solid rgba(15, 63, 143, 0.3);
+  }
+
+  /* .mobile-menu-toggle.active {
     background: linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.2),
       rgba(255, 255, 255, 0.1)
     );
-  }
+  } */
 
   .mobile-menu-toggle.active span {
     background-color: rgba(255, 255, 255, 0.9);
@@ -698,7 +734,6 @@ body {
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.6rem 0.5rem;
-    top: 70px;
   }
 
   .emergency-text {
@@ -712,7 +747,24 @@ body {
   }
 
   main {
-    margin-top: 125px;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo img {
+    height: 50px;
+    max-width: 140px;
+  }
+
+  .certification-logo {
+    height: 24px;
+  }
+
+  .badge-24-7 {
+    width: 24px;
+    height: 24px;
+    font-size: 0.4rem;
   }
 }
 
@@ -743,10 +795,9 @@ body {
   }
 }
 
-/* Adjustments for main content to account for fixed header + emergency banner */
+/* Adjustments for main content */
 main {
-  margin-top: 170px;
-  /* padding-top: var(--spacing); */
+  margin-top: 0;
   padding: 2rem var(--spacing);
   flex: 1;
 }
@@ -931,12 +982,12 @@ main {
   align-items: center;
   gap: 1.5rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
+  /* background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2); */
 }
 
 .social-icon-container {
@@ -947,15 +998,22 @@ main {
   width: 50px;
   height: 50px;
   border-radius: 15px;
-  background: linear-gradient(
+  /* background: linear-gradient(
     145deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.05)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.2);
+    rgba(15, 63, 143, 0.4),
+    rgba(15, 63, 143, 0.2)
+  ); */
+  border: 1px solid rgba(15, 63, 143, 0.4);
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
+  /* box-shadow: 0 4px 15px rgba(15, 63, 143, 0.3); */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  /* border: 1px solid rgba(255, 255, 255, 0.1); */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .social-icon-container::before {
@@ -992,10 +1050,11 @@ main {
 .social-icon {
   width: 24px;
   height: 24px;
-  color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .social-icon-container:hover .social-icon {

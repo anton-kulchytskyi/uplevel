@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  includePart("header", "partials/header.html", initHeader);
+  // Load mobile components first, then header with callback
+  includePart("mobile-menu-toggle", "partials/mobile-menu-toggle.html", () => {
+    includePart("mobile-menu", "partials/mobile-menu.html", () => {
+      includePart("header", "partials/header.html", initHeader);
+    });
+  });
+  includePart("emergency-banner", "partials/emergency-banner.html");
   includePart("footer", "partials/footer.html");
 });
 
@@ -20,7 +26,13 @@ function initHeader() {
   const header = document.getElementById("header");
   const mobileMenuToggle = document.getElementById("mobileMenuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
-  const mobileMenuOverlay = header.querySelector(".mobile-menu-overlay");
+  const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+  // Check if elements exist
+  if (!mobileMenuToggle || !mobileMenu) {
+    console.warn("Mobile menu elements not found");
+    return;
+  }
 
   // Toggle mobile menu
   mobileMenuToggle.addEventListener("click", function () {
