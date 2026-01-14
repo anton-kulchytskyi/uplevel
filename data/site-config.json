@@ -38,19 +38,15 @@
   "certifications": [
     {
       "name": "IICRC Certified",
-      "logo": "/assets/images/certifications/iicrc.jpg",
+      "logo": "/assets/images/certifications/iicrc-logo.jpg",
       "type": "image",
       "alt": "IICRC Certification"
     },
     {
       "name": "Saskatoon Chamber of Commerce",
-      "type": "widget",
-      "widgetId": "mni-membership-639038444562952735",
-      "script": "https://saskatoonchamber.chambermaster.com/Content/Script/Member.js",
-      "config": {
-        "member": 8663,
-        "styleTemplate": "#@id{text-align:center;position:relative}#@id .mn-widget-member-name{font-weight:700}#@id .mn-widget-member-logo{max-width:100%}"
-      }
+      "logo": "/assets/images/certifications/chamber-logo.jpg",
+      "type": "image",
+      "alt": "Saskatoon Chamber of Commerce Member"
     }
   ]
 }

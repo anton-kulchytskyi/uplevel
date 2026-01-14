@@ -96,14 +96,10 @@ body {
 }
 
 .certification-logo {
-  height: 40px;
+  height: 50px;
   width: auto;
   object-fit: contain;
   border-radius: 8px;
-}
-
-.chamber-widget {
-  max-width: 80px;
 }
 
 /* Emergency Banner */
@@ -216,6 +212,7 @@ body {
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   display: block;
+  white-space: nowrap;
 }
 
 .nav-menu a::before {
@@ -580,6 +577,21 @@ body {
   visibility: visible;
 }
 
+/* Tablet Styles - optimize navigation for medium screens */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nav-menu {
+    gap: 1.5rem;
+  }
+
+  .nav-menu a {
+    font-size: 0.9rem;
+  }
+
+  .header-container {
+    gap: 1rem;
+  }
+}
+
 /* Responsive Styles */
 @media (max-width: 767px) {
   .header {
@@ -626,10 +638,6 @@ body {
     right: 1rem;
     top: 1.25rem;
     gap: 0.5rem;
-  }
-
-  .chamber-widget {
-    max-width: 60px;
   }
 
   .mobile-menu-toggle {
