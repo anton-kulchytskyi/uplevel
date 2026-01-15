@@ -3,22 +3,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const basePath = getBasePath();
 
   // Load mobile components first, then header with callback
-  includePart("mobile-menu-toggle", basePath + "partials/mobile-menu-toggle.html", () => {
-    includePart("mobile-menu", basePath + "partials/mobile-menu.html", () => {
-      includePart("header", basePath + "partials/header.html", initHeader);
-    });
-  });
+  includePart(
+    "mobile-menu-toggle",
+    basePath + "partials/mobile-menu-toggle.html",
+    () => {
+      includePart("mobile-menu", basePath + "partials/mobile-menu.html", () => {
+        includePart("header", basePath + "partials/header.html", initHeader);
+      });
+    }
+  );
   includePart("emergency-banner", basePath + "partials/emergency-banner.html");
   includePart("footer", basePath + "partials/footer.html");
+
+  // Load breadcrumbs if container exists
+  const breadcrumbsContainer = document.getElementById("breadcrumbs");
+  if (breadcrumbsContainer) {
+    includePart("breadcrumbs", basePath + "partials/breadcrumbs.html", generateBreadcrumbs);
+  }
 });
 
 function getBasePath() {
   const path = window.location.pathname;
   // Count directory depth (how many folders deep we are)
-  const segments = path.split('/').filter(s => s && !s.includes('.html'));
-  if (segments.length === 0) return '';
+  const segments = path.split("/").filter((s) => s && !s.includes(".html"));
+  if (segments.length === 0) return "";
   // For each directory level, add ../
-  return '../'.repeat(segments.length);
+  return "../".repeat(segments.length);
 }
 
 function includePart(id, file, callback) {
@@ -163,4 +173,75 @@ function initHeader() {
       }
     });
   }
+}
+
+// Generate breadcrumbs based on URL path
+function generateBreadcrumbs() {
+  const breadcrumbsList = document.getElementById("breadcrumbsList");
+  if (!breadcrumbsList) return;
+
+  const path = window.location.pathname;
+  const isFileProtocol = location.protocol === "file:";
+  const basePath = getBasePath();
+
+  // Page name mappings
+  const pageNames = {
+    "about.html": "About Us",
+    "services.html": "Services",
+    "contact.html": "Contact",
+    "emergency-restoration.html": "Emergency Restoration",
+    "water-damage-restoration.html": "Water Damage Restoration",
+    "fire-smoke-damage-restoration.html": "Fire & Smoke Damage",
+    "mold-remediation.html": "Mold Remediation",
+    "contents-pack-out-services.html": "Contents & Pack-Out",
+    "reconstruction-after-loss.html": "Reconstruction"
+  };
+
+  // Build breadcrumbs array
+  const breadcrumbs = [];
+
+  // Always start with Home
+  const homeUrl = isFileProtocol ? basePath + "index.html" : "/";
+  breadcrumbs.push({ label: "Home", url: homeUrl });
+
+  // Parse path segments
+  const segments = path.split("/").filter((s) => s && s !== "index.html");
+
+  // Check if we're in a subdirectory (like /services/)
+  const isInServicesDir = segments.includes("services");
+
+  if (isInServicesDir) {
+    // Add Services link
+    const servicesUrl = isFileProtocol ? basePath + "services.html" : "/services.html";
+    breadcrumbs.push({ label: "Services", url: servicesUrl });
+  }
+
+  // Get current page filename
+  const currentPage = segments[segments.length - 1];
+  if (currentPage && currentPage.includes(".html") && currentPage !== "index.html") {
+    const pageName = pageNames[currentPage] || formatPageName(currentPage);
+    breadcrumbs.push({ label: pageName, url: null }); // null = current page, no link
+  }
+
+  // Render breadcrumbs
+  breadcrumbsList.innerHTML = breadcrumbs
+    .map((crumb, index) => {
+      const isLast = index === breadcrumbs.length - 1;
+      const separator = !isLast ? '<span class="breadcrumbs-separator">›</span>' : "";
+
+      if (crumb.url && !isLast) {
+        return `<li class="breadcrumbs-item"><a href="${crumb.url}">${crumb.label}</a>${separator}</li>`;
+      } else {
+        return `<li class="breadcrumbs-item current">${crumb.label}</li>`;
+      }
+    })
+    .join("");
+}
+
+// Format page name from filename (fallback)
+function formatPageName(filename) {
+  return filename
+    .replace(".html", "")
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
 }
