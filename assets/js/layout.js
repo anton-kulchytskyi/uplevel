@@ -184,16 +184,25 @@ function generateBreadcrumbs() {
   const isFileProtocol = location.protocol === "file:";
   const basePath = getBasePath();
 
-  // Page name mappings
+  // Page name mappings (support both with and without .html)
   const pageNames = {
+    "about": "About Us",
     "about.html": "About Us",
+    "services": "Services",
     "services.html": "Services",
+    "contact": "Contact",
     "contact.html": "Contact",
+    "emergency-restoration": "Emergency Restoration",
     "emergency-restoration.html": "Emergency Restoration",
+    "water-damage-restoration": "Water Damage Restoration",
     "water-damage-restoration.html": "Water Damage Restoration",
+    "fire-smoke-damage-restoration": "Fire & Smoke Damage",
     "fire-smoke-damage-restoration.html": "Fire & Smoke Damage",
+    "mold-remediation": "Mold Remediation",
     "mold-remediation.html": "Mold Remediation",
+    "contents-pack-out-services": "Contents & Pack-Out",
     "contents-pack-out-services.html": "Contents & Pack-Out",
+    "reconstruction-after-loss": "Reconstruction",
     "reconstruction-after-loss.html": "Reconstruction"
   };
 
@@ -204,21 +213,25 @@ function generateBreadcrumbs() {
   const homeUrl = isFileProtocol ? basePath + "index.html" : "/";
   breadcrumbs.push({ label: "Home", url: homeUrl });
 
-  // Parse path segments
-  const segments = path.split("/").filter((s) => s && s !== "index.html");
+  // Parse path segments (remove empty, index, index.html)
+  const segments = path
+    .split("/")
+    .filter((s) => s && s !== "index.html" && s !== "index")
+    .map((s) => s.replace(".html", "")); // normalize by removing .html
 
   // Check if we're in a subdirectory (like /services/)
   const isInServicesDir = segments.includes("services");
 
-  if (isInServicesDir) {
-    // Add Services link
+  if (isInServicesDir && segments.length > 1) {
+    // Add Services link (only if we're on a service subpage)
     const servicesUrl = isFileProtocol ? basePath + "services.html" : "/services.html";
     breadcrumbs.push({ label: "Services", url: servicesUrl });
   }
 
-  // Get current page filename
+  // Get current page (last segment)
   const currentPage = segments[segments.length - 1];
-  if (currentPage && currentPage.includes(".html") && currentPage !== "index.html") {
+  if (currentPage && currentPage !== "index") {
+    // Try to find name in mappings, fallback to formatting
     const pageName = pageNames[currentPage] || formatPageName(currentPage);
     breadcrumbs.push({ label: pageName, url: null }); // null = current page, no link
   }
