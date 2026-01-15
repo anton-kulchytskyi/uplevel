@@ -1,0 +1,88 @@
+{
+  "mainNav": [
+    {
+      "id": "home",
+      "label": "Home",
+      "href": "index.html",
+      "isHome": true
+    },
+    {
+      "id": "about",
+      "label": "About Us",
+      "href": "about.html"
+    },
+    {
+      "id": "services",
+      "label": "Our Services",
+      "href": "services.html",
+      "hasSubmenu": true
+    },
+    {
+      "id": "contact",
+      "label": "Get in Touch",
+      "href": "contact.html"
+    }
+  ],
+  "services": [
+    {
+      "id": "emergency-restoration",
+      "label": "Emergency Restoration",
+      "labelShort": "Emergency",
+      "href": "services/emergency-restoration.html"
+    },
+    {
+      "id": "water-damage",
+      "label": "Water Damage Restoration",
+      "labelShort": "Water Damage",
+      "href": "services/water-damage-restoration.html"
+    },
+    {
+      "id": "fire-smoke-damage",
+      "label": "Fire & Smoke Damage",
+      "labelShort": "Fire & Smoke",
+      "href": "services/fire-smoke-damage-restoration.html"
+    },
+    {
+      "id": "mold-remediation",
+      "label": "Mold Remediation",
+      "labelShort": "Mold",
+      "href": "services/mold-remediation.html"
+    },
+    {
+      "id": "contents-packout",
+      "label": "Contents & Pack-Out",
+      "labelShort": "Pack-Out",
+      "href": "services/contents-pack-out-services.html"
+    },
+    {
+      "id": "reconstruction",
+      "label": "Reconstruction",
+      "labelShort": "Reconstruction",
+      "href": "services/reconstruction-after-loss.html"
+    }
+  ],
+  "footerNav": {
+    "company": [
+      { "label": "Home", "href": "index.html" },
+      { "label": "About Us", "href": "about.html" },
+      { "label": "Contact", "href": "contact.html" }
+    ]
+  },
+  "external": {
+    "instagram": "https://www.instagram.com/uplevel_corp/",
+    "facebook": "https://www.facebook.com/uplevelcorp/",
+    "email": "mailto:uplevel@uplevelcorp.ca"
+  },
+  "phones": {
+    "emergency": {
+      "number": "+13068505955",
+      "display": "+1-306-850-5955",
+      "href": "tel:+13068505955"
+    },
+    "office": {
+      "number": "+13068506013",
+      "display": "+1-306-850-6013",
+      "href": "tel:+13068506013"
+    }
+  }
+}
