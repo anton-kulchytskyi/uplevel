@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://uplevelcorp.ca/sitemap-index.xml
